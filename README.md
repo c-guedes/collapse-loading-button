@@ -8,3 +8,4 @@ I tried my best to simplefy all what i did, feel free to PR and improve with it 
 
        toggleProgress(isLoading: Boolean)
 
+<img src="sample.gif" align="left" style="height:50%" height="600" width="300" >
