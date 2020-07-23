@@ -1,10 +1,10 @@
-# Collpase Loading Button
+# Collapase Loading Button
 
 Hi! This proof of concept (PoC) allowed me to improve my custom views skills. The button will collapse into circle and inside it will have an progress indeterminate bar.
 
 ## How to use?
 
-I tried my best to simplfy at all, feel free to PR and improve with it :D
+I tried my best to simplfy at all, feel free to PR and improve with me :D
 
        toggleProgress(isLoading: Boolean)
 
