@@ -1,4 +1,4 @@
-# Collapase Loading Button
+# Collapse Loading Button
 
 Hi! This proof of concept (PoC) allowed me to improve my custom views skills. The button will collapse into circle and inside it will have an progress indeterminate bar.
 
