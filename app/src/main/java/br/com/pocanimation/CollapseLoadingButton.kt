@@ -15,6 +15,8 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.doOnEnd
+import kotlin.math.roundToInt
+
 
 class CollapseLoadingButton @JvmOverloads constructor(
     context: Context,
@@ -24,6 +26,10 @@ class CollapseLoadingButton @JvmOverloads constructor(
     private var mState: LoadingState = LoadingState.IDLE
     val btProgress: Button by lazy { findViewById<Button>(R.id.btProgress) }
     private val progressLoading: ProgressBar by lazy { findViewById<ProgressBar>(R.id.progressCircular) }
+
+    private val roundWidthSize: Int by lazy {
+        ((progressLoading.measuredWidth * MULTIPLIER_BIAS).roundToInt()) + WIDTH_BIAS
+    }
 
     private val buttonBackground: Drawable
     private val btText: String
@@ -98,16 +104,11 @@ class CollapseLoadingButton @JvmOverloads constructor(
             return
         }
         val widthAnimation = widthAnimation(
-            ROUND_SIZE,
-            rootView.measuredWidth
+            initialWidth = roundWidthSize,
+            toWidth = rootView.measuredWidth
         )
         widthAnimation.addUpdateListener()
         widthAnimation.loadOfAnimatorSet()
-    }
-
-    fun toggleProgress(isLoading: Boolean) {
-        if (isLoading) isLoadOn()
-        else isLoadOff()
     }
 
     private fun isLoadOn() {
@@ -121,11 +122,16 @@ class CollapseLoadingButton @JvmOverloads constructor(
 
         val widthAnimation = widthAnimation(
             initialWidth = rootView.measuredWidth,
-            toWidth = ROUND_SIZE
+            toWidth = roundWidthSize
         )
 
         widthAnimation.addUpdateListener()
         widthAnimation.loadOnAnimatorSet()
+    }
+
+    fun toggleProgress(isLoading: Boolean) {
+        if (isLoading) isLoadOn()
+        else isLoadOff()
     }
 
     private fun ValueAnimator.loadOfAnimatorSet() {
@@ -137,7 +143,7 @@ class CollapseLoadingButton @JvmOverloads constructor(
                 ), this@loadOfAnimatorSet
             )
             doOnEnd {
-                progressLoading.visibility = View.GONE
+                progressLoading.visibility = View.INVISIBLE
                 btProgress.text = btText
                 mState = LoadingState.IDLE
                 btProgress.isClickable = true
@@ -168,7 +174,8 @@ class CollapseLoadingButton @JvmOverloads constructor(
     }
 
     companion object {
-        private const val ROUND_SIZE = 330
+        private const val MULTIPLIER_BIAS = 2.75
+        private const val WIDTH_BIAS = 100
         private const val ANIMATION_DURATION = 300L
         private const val DEFAULT_CORNER_VALUE = 1000F
         private const val FINAL_CORNER_VALUE = 150F
