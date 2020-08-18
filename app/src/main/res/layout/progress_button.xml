@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
-    <Button
-        android:id="@+id/btProgress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/rectangule"
-        tools:text="Click!"
-        android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ProgressBar
@@ -28,13 +13,18 @@
         android:layout_centerInParent="true"
         android:elevation="3dp"
         android:indeterminate="true"
-        android:visibility="gone"
-        tools:visibility="visible"
-        tools:indeterminateTint="#FFF"
-        app:layout_constraintBottom_toBottomOf="@+id/btProgress"
-        app:layout_constraintEnd_toEndOf="@+id/btProgress"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/btProgress"
-        app:layout_constraintTop_toTopOf="@+id/btProgress" />
+        android:visibility="invisible"
+        tools:indeterminateTint="#FFF" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btProgress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/rectangule"
+        android:textColor="@android:color/white"/>
+
+</RelativeLayout>
