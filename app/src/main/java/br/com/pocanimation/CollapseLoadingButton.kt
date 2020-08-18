@@ -15,7 +15,6 @@ import android.widget.Button
 import android.widget.ProgressBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.animation.doOnEnd
-import kotlin.math.roundToInt
 
 
 class CollapseLoadingButton @JvmOverloads constructor(
