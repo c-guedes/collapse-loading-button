@@ -28,7 +28,7 @@ class CollapseLoadingButton @JvmOverloads constructor(
     private val progressLoading: ProgressBar by lazy { findViewById<ProgressBar>(R.id.progressCircular) }
 
     private val roundWidthSize: Int by lazy {
-        ((progressLoading.measuredWidth * MULTIPLIER_BIAS).roundToInt()) + WIDTH_BIAS
+        progressLoading.measuredWidth * MULTIPLIER_BIAS
     }
 
     private val buttonBackground: Drawable
@@ -174,8 +174,7 @@ class CollapseLoadingButton @JvmOverloads constructor(
     }
 
     companion object {
-        private const val MULTIPLIER_BIAS = 2.75
-        private const val WIDTH_BIAS = 100
+        private const val MULTIPLIER_BIAS = 4
         private const val ANIMATION_DURATION = 300L
         private const val DEFAULT_CORNER_VALUE = 1000F
         private const val FINAL_CORNER_VALUE = 150F
